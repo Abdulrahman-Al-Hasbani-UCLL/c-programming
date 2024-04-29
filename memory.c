@@ -11,13 +11,16 @@ bool read_number(long* i) {
     ssize_t result = getline(&line, &length, stdin);
     if (result == -1) {
         // Could not get line
+        free(line);
         return false;
     } else {
         char *end = NULL;
         *i = strtol(line, &end, 10);
         if (*end == '\n') {
+            free(line);
             return true;
         } else {
+            free(line);
             return false;
         }
     }
@@ -38,7 +41,7 @@ void read_numbers(long* numbers, long nb_numbers) {
 
 long sum(long* numbers, long nb_numbers) {
     long result = 0;
-    for (long i = 0; i <= nb_numbers; ++i) {
+    for (long i = 0; i < nb_numbers; ++i) {
         result += numbers[i];
     }
     return result;
@@ -63,7 +66,5 @@ int main(void) {
     read_numbers(numbers, nb_numbers);
 
     printf("Sum: %ld\n", sum(numbers, nb_numbers));
-
-    free(numbers);
     free(numbers);
 }
