@@ -40,12 +40,12 @@ Consider [factorial.c](./factorial.c), an implementation of the factorial functi
 that uses the [GMP](https://gmplib.org/) library.
 
 Q1: Why do we need to use GMP, and we can't just use a normal `int` or `long`? 
-## This way the size of the number can grow dynamicly 
+###### This way the size of the number can grow dynamicly 
 
 Now take a look at [factorial.py](./factorial.py).
 
 Q2: Which of these two implementations is easiest to read?
-## python
+###### python
 
 Let's benchmark our two implementations. Make a release build of `factorial.c`
 and time how long it takes to get the factorial of `10000`. You can use Bash's
@@ -57,7 +57,7 @@ Now try the same thing with 100000.
 
 Q3: How big is the difference in performance between the C version and the Python
 version?
-## about 5s
+###### about 5s
 
 ## 2. Pointers
 
@@ -116,13 +116,13 @@ If you want to follow the address of a pointer to its value, you can use `*`, th
 The asterisk can thus mean a few different things: when used in the type declaration like
 `int*` it means "pointer to int". When used in an expression like `*p` it means: take the
 value pointed to by `p`.
-## nothing, C just allocates memmorry
+###### nothing, C just allocates memmorry
 
 Q2: There's yet another meaning of the asterisk. What other meaning does it have that
 you're used to from other programming languages?
-## Multiplay
+###### Multiplay
 Q3: What's the value of `i` after all of this code: 
-## 5
+###### 5
 
 ```c
 int i = 12;
@@ -166,15 +166,15 @@ the operating system is concerned we're still using the memory even if we don't 
 any use for it anymore.
 
 Q1: Are garbage collected languages immune to memory leaks?
-#### No
+###### No
 
 Note that `free` does not change the value of `chars`, so `chars` now points to freed
 memory. Trying to use that memory after we called `free` is called a "**use after free**"
 error, and could result in a crash, or worse.
 
 Q2: What's worse than a crash?
-#### losing data
-### Fixing memory issues
+###### losing data
+###### Fixing memory issues
 
 Consider the code in [memory.c](./memory.c). This code has some issues, see if you can spot
 them. We've got:
@@ -191,7 +191,7 @@ does.
 
 Q1: Does Java have undefined behavior? What happens if we try to access an array outside of
 its bounds?
-#### Error
+###### Error
 
 Memory errors can be tricky to find and fix. Luckily we have tools to assist us. One
 of those tools is called [Valgrind](https://valgrind.org/).
